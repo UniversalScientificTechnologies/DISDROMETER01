@@ -1,0 +1,3 @@
+[submodule "sw/signal-piping-tools"]
+	path = sw/signal-piping-tools
+	url = https://github.com/MLAB-project/signal-piping-tools.git
