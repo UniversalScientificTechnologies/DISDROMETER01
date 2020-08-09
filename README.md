@@ -9,3 +9,13 @@ The signal digitalization is based on high-precision [sdr-widget](https://wiki.m
 
 
 ![Internal electronic of distrometer device ](./doc/img/DISTROMETER01_electronics.jpg)
+
+
+### Usage
+
+    sudo apt-get install sox
+
+
+The directory sw contains a submodule with required dependency "signal-piping-tools", which needs to be build prior start of distrometer recording script. 
+
+    ./start.sh 
