@@ -7,6 +7,7 @@ The signal digitalization is based on high-precision [sdr-widget](https://wiki.m
 
 ![Distrometer sensing element](./doc/img/DISTROMETER01_internals.jpg)
 
+Distrometer sensor is mounted in the standard TK PS 99-6-o 110 403 01 mounting box.
 
 ![Internal electronic of distrometer device ](./doc/img/DISTROMETER01_electronics.jpg)
 
