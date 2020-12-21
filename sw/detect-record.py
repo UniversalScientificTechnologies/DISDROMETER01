@@ -22,8 +22,6 @@ TIMEOUT_LENGTH = 5
 
 f_name_directory = r'.'
 
-dev_index = 6
-
 class Recorder:
 
     @staticmethod
@@ -41,13 +39,22 @@ class Recorder:
         return rms * 1000
 
     def __init__(self):
+        self.dev_index = -1
         self.p = pyaudio.PyAudio()
+        self.info = self.p.get_host_api_info_by_index(0)
+        self.numdevices = self.info.get('deviceCount')
+        for i in range(0, self.numdevices):
+            if (self.p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+                print("Input Device id ", i, " - ", self.p.get_device_info_by_host_api_device_index(0, i).get('name'))
+                if (self.p.get_device_info_by_host_api_device_index(0, i).get('name').find('Yoyodyne')==0):
+                    self.dev_index = i
+        print('SDR Widget:', self.dev_index)
         self.stream = self.p.open(format=FORMAT,
                                   channels=CHANNELS,
                                   rate=RATE,
                                   input=True,
                                   frames_per_buffer=CHUNK,
-                                  input_device_index = dev_index)
+                                  input_device_index = self.dev_index)
 
     def record(self):
         print('Noise detected, recording beginning')
