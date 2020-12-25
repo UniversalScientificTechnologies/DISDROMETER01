@@ -24,14 +24,15 @@ After that the signal-piping-tools sources should be downloaded in "sw/signal-pi
 
     cd sw/signal-piping-tools
 
-Then proceed according to README.md in that directory.
+Then proceed according to README.md in that directory. eg. 
 
+    $ sudo apt-get install  sox build-essential  libusb-dev libusb-1.0-0-dev  python-setuptools  libcfitsio-dev buffer pv ntp libvolk2-dev
 
 ### Usage
 
-    sudo apt-get install sox
-
-
-The directory sw contains a submodule with required dependency "signal-piping-tools", which needs to be build prior start of distrometer recording script.
+The directory sw contains a submodule with required dependency "signal-piping-tools", which needs to be build prior start of distrometer recording script. After that the recording could be start by. 
 
     ./start.sh
+
+There should be edited the 'station' variable in the script and signal recording method. The script contains example of automatic recording of long hour raw WAV files named by system time. 
+
