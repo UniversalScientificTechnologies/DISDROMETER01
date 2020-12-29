@@ -18,8 +18,11 @@ if ! pidof ./servecmd > /dev/null; then
     ./servecmd -d -p 3731 'nc localhost 3701 | buffer -s 64k -m 2m | ./x_fir_dec -b 128 96000 26500 48 3731_taps'
 fi
 
-#while true; do
-#    today=`date '+%Y_%m_%d_%H%M%S%N'`;
-#    filename="/data/distrometer/$station-$today.wav"
-#    nc localhost 3701 | sox -t f32 -c 2 -r 96000 - $filename trim 0 60
-#done
+echo "Starting recording of wav files."
+
+while true; do
+    today=`date '+%Y_%m_%d_%H%M%S%N'`;
+    filename="/data/distrometer/$station-$today.wav"
+    echo "Recording "$filename
+    true | nc localhost 3701 | sox -t f32 -c 2 -r 96000 - -t wav $filename trim 0 300
+done
